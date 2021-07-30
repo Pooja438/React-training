@@ -4,37 +4,47 @@ const LoginCmp = (props) => {
     return (
         <form className="form">
             <div className="group">
-                <label htmlFor="" className="label">Name</label>
+                <label htmlFor="" className="label">id</label>
                 <input
                     type="number"
-                    name="email"
+                    name="username"
                     onChange={props.handleChange}
                     className="inp"
-                    placeholder="Enter email" required />
-                {props.emailErr ? <p style={{ color: "red" }}>Maxlenth should be 6 chars</p> : null}
+                    placeholder="Enter id" required />
+                {props.errors.nameErr ? <p style={{ color: "red" }}>Maxlenth should be 6 chars</p> : null}
+
             </div>
             <div className="group">
                 <label htmlFor="" className="label">Password</label>
                 <input
                     type="password"
-                    name="password"
+                    name="userpassword"
                     onChange={props.handleChange}
                     className="inp"
                     placeholder="Enter password"
                     required />
+                {props.errors.passwordErr ? <p style={{ color: "red" }}>Password required</p> : null}
             </div>
             <div className="group">
                 <label htmlFor="" className="label">Address</label>
                 <input
                     type="text"
-                    name="address"
+                    name="useraddress"
                     onChange={props.handleChange}
                     className="inp"
-                    placeholder="Enter password"
+                    placeholder="Enter useraddress"
                     required />
+                {props.errors.addressErr ? <p style={{ color: "red" }}>Address Required</p> : null}
             </div>
             <div>
-                <button className="btn" type="submit">Submit</button>
+                <button
+                    className="btn"
+                    type="button"
+                    // disabled={props.errors.nameErr || props.errors.passwordErr || props.errors.addressErr}
+                    disabled={!props.btnDisable}
+                    onClick={props.handleSubmit}>
+                    Submit
+                </button>
                 <button className="btn" type="reset">Clear</button>
             </div>
         </form>
